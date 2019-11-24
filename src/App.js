@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
+import Home from './components/Home.js'
 import About from './components/About.js';
+import Dashboard from './components/Dashboard.js';
 import Helmet from 'react-helmet';
+import Navigation from './components/Navigation.js'
 
 import {
   BrowserRouter as Router,
@@ -13,10 +16,8 @@ import {
 
 
 export default class App extends Component {
-  
   render () {
-  return (
-
+    return (
      <div>
         <Helmet>
         <link
@@ -26,49 +27,23 @@ export default class App extends Component {
             crossorigin="anonymous"
          /> 
         </Helmet>
+        <Router>
+          <Navigation />
 
-      <Router>
-       <div>
-        <nav className="navbar">
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/dashboard">Dashboard</Link>
-            </li>
-          </ul>
-        </nav>
+          <Switch>
+            <Route path="/dashboard">
+              <Dashboard />
+            </Route>
+            <Route path="/about">
+              <About />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </Router>     
       </div>
-
-      <Switch>
-        <Route path="/about">
-          <About />
-        </Route>
-        <Route path="/">
-          <Home />
-        </Route>
-        <Route path="/dashboard">
-          <Dashboard />
-        </Route>
-      </Switch>
-      </Router>
-      </div>
-   
-
-     
-  );
-}
+    );
+  }
 }
 
-function Home () {
-  return <h2>Home</h2>
-}
-
-
-function Dashboard () {
-  return <h2>Dashboard</h2>
-}
