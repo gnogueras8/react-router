@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
+import About from './components/About.js';
+import Helmet from 'react-helmet';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,14 +11,28 @@ import {
 } from "react-router-dom"
 
 
-export default function App() {
+
+export default class App extends Component {
+  
+  render () {
   return (
-    <Router>
-      <div>
-        <nav>
+
+     <div>
+        <Helmet>
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous"
+         /> 
+        </Helmet>
+
+      <Router>
+       <div>
+        <nav className="navbar">
           <ul>
             <li>
-              <Link to="/">Home </Link>
+              <Link to="/">Home</Link>
             </li>
             <li>
               <Link to="/about">About</Link>
@@ -39,13 +56,12 @@ export default function App() {
         </Route>
       </Switch>
       </Router>
+      </div>
+   
 
      
   );
 }
-
-function About () {
-  return <h2>About</h2>
 }
 
 function Home () {
