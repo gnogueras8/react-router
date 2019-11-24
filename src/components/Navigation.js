@@ -3,10 +3,14 @@ import Nav from 'react-bootstrap/Nav'
 
 
 export default class Navigation extends Component {
+    state = ({
+        navClassNames: "navbar navbar-dark bg-dark text-white"
+    })
+
     render () {
         return (
             <div>
-                <Nav className="navbar navbar-dark bg-dark text-white" defaultActiveKey="/" as="ul">
+                <Nav className={this.state.navClassNames} defaultActiveKey="/" as="ul">
                     <Nav.Item as="li">
                         <Nav.Link href="/">Home</Nav.Link>
                     </Nav.Item>
