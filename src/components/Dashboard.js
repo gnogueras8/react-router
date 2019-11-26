@@ -4,8 +4,59 @@ import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Column from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
+import axios from "axios";
+import { thisExpression } from '@babel/types';
+
+async function getTable () {
+    const headers = {
+        api_key:""
+    }
+    const client = axios.create({
+        baseURL: "google.com",
+        timeout: 2000,
+        headers : headers
+    })
+    
+
+    client.get().then(
+
+    )
+
+}
 
 class Dashboard extends Component {
+    constructor (props) {
+        super(props)
+        this.state ={
+            title: props.title
+        }
+    }
+
+    tableHead = () => {
+        return(                                    
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        )
+    };
+
+    dummyRecord = () => {
+        return(
+            <tr>
+            <td>1</td>
+            <td contenteditable="true">John</td>
+            <td contenteditable="true">Doe</td>
+            <td contenteditable="true">(801)555-5555</td>
+            <td contenteditable="true">johndoe@gmail.com</td>    
+        </tr>
+        )
+    }
 
     render () {
         return (
@@ -19,25 +70,13 @@ class Dashboard extends Component {
                         </Column>
                         <Column lg={10}>
                             <div className="container">
-                                <h2>Leads</h2>
+                                <h2>{this.props.title}</h2>
                                 <Table striped bordered hover variant="dark">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
-                                            <th>Phone</th>
-                                            <th>Email</th>
-                                        </tr>
-                                    </thead>
+                                    <this.tableHead></this.tableHead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td contenteditable="true">John</td>
-                                            <td contenteditable="true">Doe</td>
-                                            <td contenteditable="true">(801)555-5555</td>
-                                            <td contenteditable="true">johndoe@gmail.com</td>    
-                                        </tr>
+                                        <this.dummyRecord></this.dummyRecord>
+
+                                        
                                     </tbody>
                                 </Table>
                                 <Button>

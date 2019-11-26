@@ -32,7 +32,7 @@ export default class App extends Component {
 
           <Switch>
             <Route path="/dashboard">
-              <Dashboard />
+              <Dashboard title="Leads" />
             </Route>
             <Route path="/about">
               <About />
