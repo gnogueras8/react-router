@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav'
 
 export default class Navigation extends Component {
     state = ({
-        navClassNames: "navbar navbar-dark bg-dark text-white"
+        navClassNames: "navbar navbar-dark bg-dark text-white p-0"
     })
 
     render () {

@@ -6,6 +6,9 @@ import Column from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import axios from "axios";
 import { thisExpression } from '@babel/types';
+import SalesChart from './SalesChart';
+import Card from 'react-bootstrap/Card';
+
 
 async function getTable () {
     const headers = {
@@ -27,7 +30,7 @@ async function getTable () {
 class Dashboard extends Component {
     constructor (props) {
         super(props)
-        this.state ={
+        this.state = {
             title: props.title
         }
     }
@@ -58,36 +61,41 @@ class Dashboard extends Component {
         )
     }
 
+
     render () {
         return (
             <div>
                 <Container fluid>
                     <Row>
-                        <Column lg={2}>
-                            <h2>
+                        <Column lg={2} className="shadow" >
+                            <h2 className="mt-4">
                             Menu
                             </h2>    
                         </Column>
-                        <Column lg={10}>
-                            <div className="container">
-                                <h2>{this.props.title}</h2>
-                                <Table striped bordered hover variant="dark">
-                                    <this.tableHead></this.tableHead>
-                                    <tbody>
-                                        <this.dummyRecord></this.dummyRecord>
-
-                                        
-                                    </tbody>
-                                </Table>
-                                <Button>
-                                    Submit
+                        <Column lg={10} className="bg-light">
+                            <Container>
+                                <Card className="mt-4 p-4 shadow">
+                                    <h2>{this.props.title}</h2>
+                                    <Table striped bordered hover variant="dark">
+                                        <this.tableHead></this.tableHead>
+                                        <tbody>
+                                            <this.dummyRecord></this.dummyRecord>
+                                        </tbody>
+                                    </Table>
+                                </Card>
+                                <Button className="mt-4 shadow">
+                                        Save Lead Info
                                 </Button>
-                                </div>
+                            </Container>
+                            <Container className="mt-4 mb-4">
+                                <h1>Leads Delivered (2018 VS. 2017)</h1>
+                                <SalesChart>
+                                </SalesChart>
+                            </Container>
                             </Column>
                         </Row>
                     </Container>
                 </div>
-            
         )
     }
     
