@@ -8,6 +8,7 @@ import axios from "axios";
 import { thisExpression } from '@babel/types';
 import SalesChart from './SalesChart';
 import Card from 'react-bootstrap/Card';
+import TreeChart from './Tree';
 
 
 async function getTable () {
@@ -60,6 +61,7 @@ class Dashboard extends Component {
         </tr>
         )
     }
+    
 
 
     render () {
@@ -91,6 +93,15 @@ class Dashboard extends Component {
                                 <h1>Leads Delivered (2018 VS. 2017)</h1>
                                 <SalesChart>
                                 </SalesChart>
+                            </Container>
+                            <Container >
+                            <Column lg={6} >
+                            
+                            <Card className="mt-4 shadow mb-4 p-4">
+                            <TreeChart></TreeChart>
+                            </Card>
+                            
+                            </Column>
                             </Container>
                             </Column>
                         </Row>
